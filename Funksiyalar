@@ -1,0 +1,120 @@
+from uzwords import words
+
+import random as r
+
+def son_top(x=10):	
+	tsdf_sn=r.randint(1,x)
+	print(f"1 dan {x} gacha bo'lgan sonlar orasidan birini o'yladim  topishga harakat qiling!")
+	urinishlar = 0
+	while True:
+		taxmin = int(input(">>>"))
+		urinishlar += 1
+		if taxmin > tsdf_sn:
+			print("Xato, men bundan kichikroq son o'ylagandim! Yana urining!")
+		elif taxmin < tsdf_sn:
+			print("Xato, men bundan kattaroq son o'ylagandim! ana urining!")
+		else:
+			break
+	print(f"Qoyil siz {urinishlar} ta urinishda to'g'ri topdingiz. Tabriklayman..")	
+	return urinishlar					
+
+
+def son_avto(x=10):
+	input(f"1 dan {x} gacha bo'lgan sonlar orasidan bitta son o'ylang, va istalgan tugmani bosing, men topishga harakat qilaman!")
+	quyi = 1
+	yuqori = x
+	taxminlar = 0
+	while True:
+		taxminlar += 1
+		if quyi != yuqori:
+			taxmin = r.randint(quyi, yuqori)
+		else:
+			taxmin = quyi
+		javob = input(f"Siz {taxmin} sonini o'yladingiz! to'g'ri(t),"
+			f"kichikroq son o'ylagan b'lsangiz(-), kattaroq bo'lsa(+)".lower())
+		if javob == "-":
+			yuqori = taxmin - 1
+		elif javob == "+":
+			quyi = taxmin + 1
+		else:
+			break
+	print(f"{taxminlar} ta urinishda topdim!")
+	return taxminlar
+	
+	
+	
+def play():
+		while True:
+			taxminlar_user = son_top(100)
+			taxminlar_pc = son_avto(100)
+			if taxminlar_user>taxminlar_pc:
+				print(f"Siz {taxminlar_user} ta taxmin, men {taxminlar_pc} ta taxmin bilan men yutdim!")
+				print("《《《 ------YOU LOSE!------ 》》》")
+			elif taxminlar_user<taxminlar_pc:
+				print(f"Men {taxminlar_pc} ta taxmin, siz {taxminlar_user} ta taxmin bilan yutdingiz!")
+				print("《《《 ------YOU WIN!------ 》》》")
+			else:
+				print(f"Siz {taxminlar_user} ta taxmin, men {taxminlar_pc} ta taxmin bilan DURRANG! o'ynadik!")
+				print("《《《 ------DURRANG!------ 》》》")
+			yana =  input("Yana o'ynaysizmi ha(1) / yo'q(0)")
+			if yana != "1":
+				print(
+				)
+				print("======O'yin tugadi!======")
+				break
+			else:
+				print("---------------Yaxshi unda yana o'ynaymiz-------------")	
+
+
+
+
+def get_word():
+	word = r.choice(words)
+	while "-" in word or ' ' in word:
+		word = r.choice(words)
+	return word.upper()
+
+def display(user_letters, word):
+	display_letter = ""
+	for letter in word:
+		if letter in user_letters:
+			 display_letter += letter + ' '
+		else:
+			display_letter += "□ "
+	return display_letter.strip()
+
+
+def game():
+	word = get_word()
+	word_letters = set(word)
+	user_letters = set()
+	attempts = 0
+	print(f"Men {len(word)} ta harfli so'z o'yladim --- topishga harakat qiling!")
+	while len(word_letters) > 0:
+		print(display(user_letters, word))
+		if user_letters:
+			print(f"Shu vaqtgacha kiritgan harflaringiz:", " ".
+join(sorted(user_letters)))
+		
+		letter = input("Harf kiriting\n>>>").strip().upper()
+		
+		if len(letter) != 1 or not letter.isalpha():
+			print("Iltimos, faqat bitta harf kiriting.")
+			continue
+			
+			
+		if letter in user_letters:
+			print("Bu harfni avval kiritgansiz! Boshqa harf kiriting!")
+			continue
+		
+		attempts += 1
+		user_letters.add(letter)
+		if letter in word_letters:
+			word_letters.remove(letter)
+			print(f"{letter} harfi to'g'ri!")
+		else:
+			print("Men o'ylagan so'zda bunday harf mavjud emas!")
+			
+	print(f"Tabriklayman! {attempts} ta urinishda to'g'ri topdingiz! Men o'ylagan so'z {word} edi. Qoyil!")
+	
+
