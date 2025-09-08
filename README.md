@@ -1,19 +1,19 @@
 # Race.py
-#Oddiy va yaxshi
-
-import turtle
-from random import randint as r
-
-def race():
+Oddiy va yaxshi#
+    
+	import turtle
+	from random import randint as r
+    def race():
 	tsbq1 = turtle.Turtle()
-	turtle.bgcolor('forestgreen')
+	           turtle.bgcolor('forestgreen')
+	      
 	tsbq1.shape('turtle')
 	tsbq1.color('blue')
 	tsbq1.penup()
 	tsbq1.goto(-300, 200)
 	tsbq1.pendown()
-	
-	tsbq2 = turtle.Turtle()
+ 
+    tsbq2 = turtle.Turtle()
 	tsbq2.shape('turtle')
 	tsbq2.color('red')
 	tsbq2.penup()
@@ -77,9 +77,7 @@ def race():
 			
 				
 	
-	turtle.mainloop()	
-
-race()
+	turtle.mainloop()	race()
 
 
 
