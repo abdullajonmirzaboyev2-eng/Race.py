@@ -5,7 +5,7 @@ Oddiy va yaxshi#
 	from random import randint as r
     def race():
 	tsbq1 = turtle.Turtle()
-	           turtle.bgcolor('forestgreen')
+    turtle.bgcolor('forestgreen')
 	      
 	tsbq1.shape('turtle')
 	tsbq1.color('blue')
@@ -76,8 +76,8 @@ Oddiy va yaxshi#
 				
 			
 				
-	
-	turtle.mainloop()	race()
+	turtle.mainloop()	
+    race()
 
 
 
